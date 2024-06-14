@@ -1,3 +1,7 @@
+// Giben n number of water bottles, selling each one year. The 'Profit' will be sum of (year * value of water bottle)
+// The water bottle in packet can be taken only from front and back side
+// find the maximum profit that can be obtained
+
 import java.util.Scanner;
 
 public class MaxProfit {
