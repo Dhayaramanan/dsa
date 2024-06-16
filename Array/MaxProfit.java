@@ -39,5 +39,6 @@ public class MaxProfit {
         }
         
         System.out.println(profit);
+        in.close();
     }
 }
