@@ -1,7 +1,5 @@
 package Practice.Sorting;
 
-import org.jetbrains.annotations.NotNull;
-
 public class BubbleSort {
     public static void main(String[] args) {
         int[] arr = {3, 1, 5, 4 ,2};
@@ -12,7 +10,7 @@ public class BubbleSort {
         }
     }
 
-    public static void bubbleSort(int @NotNull [] arr) {
+    public static void bubbleSort(int[] arr) {
         boolean swapped;
         for (int i = 0; i < arr.length - 1; ++i) {
             swapped = false;
