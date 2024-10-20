@@ -1,8 +1,5 @@
 package Stacks;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
 public class ParsingABooleanExpression {
@@ -10,10 +7,8 @@ public class ParsingABooleanExpression {
         Stack<Character> operators = new Stack<>();
         Stack<Character> operands = new Stack<>();
 
-        List<Character> operatorList = new ArrayList<>(Arrays.asList('&', '|', '!'));
-
         for (char operand : expression.toCharArray()) {
-            if (operatorList.contains(operand)) {
+            if (operand == '&' || operand == '|' || operand == '!') {
                 operators.push(operand);
             } else if (operand == '(' || operand == 't' || operand == 'f' || operand == ',') {
                 operands.push(operand);
@@ -35,17 +30,17 @@ public class ParsingABooleanExpression {
     private static char parse(StringBuilder operation) {
         char result;
         if (operation.charAt(0) == '&') {
-            result = parse_and(operation);
+            result = parseAnd(operation);
         } else if (operation.charAt(0) == '|') {
-            result = parse_or(operation);
+            result = parseOR(operation);
         } else {
-            result = parse_not(operation);
+            result = parseNot(operation);
         }
 
         return result;
     }
 
-    private static char parse_and(StringBuilder operation) {
+    private static char parseAnd(StringBuilder operation) {
         for (int i = 1; i < operation.length(); i++) {
             if (operation.charAt(i) == 'f') return 'f';
         }
@@ -53,7 +48,7 @@ public class ParsingABooleanExpression {
         return 't';
     }
 
-    private static char parse_or(StringBuilder operation) {
+    private static char parseOR(StringBuilder operation) {
         for (int i = 1; i < operation.length(); i++) {
             if (operation.charAt(i) == 't') return 't';
         }
@@ -61,7 +56,7 @@ public class ParsingABooleanExpression {
         return 'f';
     }
 
-    private static char parse_not(StringBuilder operation) {
+    private static char parseNot(StringBuilder operation) {
         return (operation.charAt(1) == 't') ? 'f' : 't';
     }
 
